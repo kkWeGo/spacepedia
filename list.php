@@ -28,10 +28,10 @@
         </div>
         <!-- NAVBAR -->
         <ul class="navbar navbarlist" id="navbar">
+            <li><a href="index.php">HOME</a></li>
             <li><a href="#introcorpicelesti">CORPI CELESTI</a><div></div></li>
             <li><a href="#introraggruppamenti">RAGGRUPPAMENTI</a><div></div></li>
             <li><a href="#introastronomi">ASTRONOMI</a><div></div></li>
-            <li><a onclick="slidediv('div-search', 'div-top', 'div-center', '#hero', 1, 1, 1), slidediv('cut', 'div-left', 'div-center', '#hero', 0, 0)">SEARCH</a></li>
             <?php
                 if (!isset($_SESSION["tipouser"])){
             ?>

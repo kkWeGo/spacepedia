@@ -1,0 +1,209 @@
+Stelle
+
+    Classificazione	
+
+    Classe Spettrale
+
+    Fk astronomo che l'ha scoperta
+
+    Path descrizione
+
+    Path foto
+
+    fk Sistema planetario(opzionale)
+
+    Numero pianeti (derivato)
+
+    Parametri orbitali
+
+        Semiasse maggiore                                       2 valori km e UA
+
+        Periodo orbitale	                                    2 valori anni e giorni
+
+        Velocità orbitale 	                                    3 valori min media e max km/s
+
+    Dati fisici
+
+        Diametro equat.	
+        Diametro polare	
+        Diametro medio	                                        1 valore in km
+
+        Schiacciamento                                          1 valore numerico scientifico
+
+        superficie                                              1 valore in m^2
+
+        Volume                                                  1 valore in m^3
+
+        Massa                                               	1 valore in kg
+
+        Densità media                                           
+        Densità nucleo                                           
+        Densità fotosfera                                          
+        Densità cromosfera                                      
+        Densità corona                                          1 valore in kg/m^3
+
+        Acceleraz. di gravità in superficie	                    2 valore in m/s² all'equatore e grammi
+
+        Velocità di fuga                                        1 valore in m/s
+
+        A 30° di latitudine
+        A 60° di latitudine
+        A 75° di latitudine                                     1 valore in giorni ore minuti
+
+        Velocità di rotazione (all'equatore)	                1 valore in m/s
+
+        Inclinaz. dell'asse sull'eclittica
+        Inclinaz. dell'asse sul piano galattico                 1 valore in gradi
+
+        Ascensione Retta polo nord	                            2 valori in gradi e ore minuti secondi
+
+        Declinazione                                            1 valore in gradi
+
+        Temperatura superficiale 
+        Temperatura della corona                           
+        Temperatura del nucleo                                  1 valore in K
+
+        Luminosità                                              1 valore in W e num scientifico
+
+        Radianza                                                1 valore in W/(sr*m^2)
+
+        Metallicità	                                            2 valori in Z e Fe/H 
+
+        Età stimata	                                            1 valore in miliardi di anni        
+        
+    Dati osservativi
+            
+        Magnitudine apparente media
+        Magnitudine apparente
+        Magnitudine assoluta                                    1 valore numerico
+
+        Diametro apparente                                      3 valori in ' e '' min medio e max
+
+Pianeti
+
+    Classificazione	
+
+    Fk astronomo che l'ha scoperto
+
+    Path descrizione
+
+    Path foto
+
+    Fk sistema planetario
+
+    Numero satelliti (derivato)
+
+    Parametri orbitali
+
+        Semiasse maggiore
+        Perielio
+        Afelio
+        Circonf. Orbitale	                                    2 valori km e UA
+
+        Periodo orbitale	                                    2 valori anni e giorni
+
+        Velocità orbitale 	                                    3 valori min media e max km/s
+
+        Inclinazione rispetto all'equat. del Sole
+        Longitudine del nodo ascendente
+        Argom. del perielio	                                    1 valore in gradi
+
+        Anelli
+        Eccentricità		                                    1 valore numerico
+
+    Dati fisici
+
+        Diametro equat.	
+        Diametro polare	
+        Diametro medio	                                        1 valore in km
+
+        superficie                                              1 valore in m^2
+
+        Volume                                                  1 valore in m^3
+
+        Massa                                               	1 valore in kg
+
+        Densità media                                           1 valore in kg/m^3
+
+        Acceleraz. di gravità in superficie	                    2 valore in m/s² all'equatore e grammi
+
+        Velocità di fuga                                        1 valore in m/s
+
+        Periodo di rotazione	                                2 valori in giorni siderei e ore 
+
+        Velocità di rotazione (all'equatore)	                1 valore in m/s
+
+        Inclinaz. dell'asse sull'eclittica	                    1 valore in gradi
+        Ascensione Retta polo nord	                            2 valori in gradi e ore minuti secondi
+
+        Declinazione                                            1 valore i gradi
+
+        Temperatura superficiale                                6 valori min media e max C e K
+
+        Pressione atmosferica                                   1 valore in Pa
+
+        Albedo                                                  1 valore in km
+
+Sateliti
+
+    Classificazione	
+
+    Fk astronomo che l'ha scoperto
+
+    Path descrizione
+
+    Path foto
+
+    Fk pianeta
+
+    Parametri orbitali
+
+        Semiasse maggiore
+        Perigeo
+        Apogeo
+        Circonf. Orbitale	                                    2 valori km e UA
+
+        Periodo orbitale	                                   
+        Periodo orbitale	                                    2 valori giorni e giorni ore minuti
+
+        Velocità orbitale 	                                    3 valori min media e max km/s
+
+        Inclinazione rispetto all'equat. del Sole
+        Longitudine del nodo ascendente
+        Argom. del perielio	                                    1 valore in gradi
+
+        Anelli
+        Eccentricità		                                    1 valore numerico
+
+    Dati fisici
+
+        Diametro equat.	
+        Diametro polare	
+        Diametro medio	                                        1 valore in km
+
+        superficie                                              1 valore in m^2
+
+        Volume                                                  1 valore in m^3
+
+        Massa                                               	1 valore in kg
+
+        Densità media                                           1 valore in kg/m^3
+
+        Acceleraz. di gravità in superficie	                    2 valore in m/s² all'equatore e grammi
+
+        Velocità di fuga                                        1 valore in m/s
+
+        Periodo di rotazione	                                2 valori in giorni siderei e ore 
+
+        Velocità di rotazione (all'equatore)	                1 valore in m/s
+
+        Inclinaz. dell'asse sull'eclittica	                    1 valore in gradi
+        Ascensione Retta polo nord	                            2 valori in gradi e ore minuti secondi
+
+        Declinazione                                            1 valore i gradi
+
+        Temperatura superficiale                                6 valori min media e max C e K
+
+        Pressione atmosferica                                   1 valore in Pa
+
+        Albedo                                                  1 valore in km

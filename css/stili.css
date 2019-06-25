@@ -552,7 +552,7 @@ table.admin tbody td form button:hover{
     width: 50%;
     height: auto;
 }
-.frminsert input, .frmmodify input{
+.frminsert input, .frmmodify input, .frminsert select, .frmmodify select{
     position: relative;
     top: 0%;
     left: 0%;
@@ -565,10 +565,13 @@ table.admin tbody td form button:hover{
     transition: all 0.5s ease;
     border-bottom: 4px solid rgb(50, 97, 153, 0.4);
 }
-.frminsert input:hover, .frmmodify input:hover{
+.frminsert select, .frmmodify select{
+    width: 54%;
+}
+.frminsert input:hover, .frmmodify input:hover, .frminsert select:hover, .frmmodify select:hover{
     border-bottom: 4px solid rgb(50, 97, 153, 0.7);
 }
-.frminsert input:focus, .frmmodify input:focus{
+.frminsert input:focus, .frmmodify input:focus, .frminsert select:focus, .frmmodify select:focus{
     border-bottom: 4px solid rgb(50, 97, 153, 1);
 }
 .frminsert button, .frmmodify button{
@@ -595,7 +598,7 @@ table.admin tbody td form button:hover{
 }
 
 .herolist .hero-bg{
-    clip-path: polygon(0 0, 0 100%, 100% 70%, 100% 0);
+    clip-path: polygon(0 0, 0 100%, 100% 80%, 100% 0);
 }
 .titlelist{
     top: 0%;
@@ -621,12 +624,11 @@ table.admin tbody td form button:hover{
     margin-top: 20px;
 }
 .navbarlist li div{
-    position: relative;
-    float: left;
-    top: -450%;
-    left: 105%;
+    position: absolute;
+    top: 100%;
+    left: -80%;
     height: 250%;
-    width: 200%;
+    width: 45%;
     background-color: white;
     transition: all 1s ease;
     border-radius: 20px;
@@ -635,7 +637,7 @@ table.admin tbody td form button:hover{
     box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
 }
 .navbarlist li:hover div{
-    top: -150%;
+    left: 16%;
 }
 .lista{
     position: absolute;
