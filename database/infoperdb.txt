@@ -6,7 +6,7 @@ Stelle
 
     Fk astronomo che l'ha scoperta
 
-    Path descrizione
+    Path file con testo
 
     Path foto
 
@@ -85,7 +85,7 @@ Pianeti
 
     Fk astronomo che l'ha scoperto
 
-    Path descrizione
+    Path file con testo
 
     Path foto
 
@@ -150,7 +150,7 @@ Sateliti
 
     Fk astronomo che l'ha scoperto
 
-    Path descrizione
+    Path file con testo
 
     Path foto
 
@@ -164,15 +164,14 @@ Sateliti
         Circonf. Orbitale	                                    2 valori km e UA
 
         Periodo orbitale	                                   
-        Periodo orbitale	                                    2 valori giorni e giorni ore minuti
+        Periodo sinodico	                                    2 valori giorni e giorni ore minuti
 
         Velocità orbitale 	                                    3 valori min media e max km/s
 
-        Inclinazione rispetto all'equat. del Sole
-        Longitudine del nodo ascendente
-        Argom. del perielio	                                    1 valore in gradi
+        Inclinazione sull'eclittica                             1 valore in gradi
 
-        Anelli
+        Inclinazione rispetto all'equat. del fk_pianeta         2 valori in gradi da a
+        
         Eccentricità		                                    1 valore numerico
 
     Dati fisici
@@ -181,7 +180,9 @@ Sateliti
         Diametro polare	
         Diametro medio	                                        1 valore in km
 
-        superficie                                              1 valore in m^2
+        Schiacciamento                                          1 valore numerico
+
+        Superficie                                              1 valore in m^2
 
         Volume                                                  1 valore in m^3
 
@@ -193,12 +194,11 @@ Sateliti
 
         Velocità di fuga                                        1 valore in m/s
 
-        Periodo di rotazione	                                2 valori in giorni siderei e ore 
+        Periodo di rotazione	                                2 valori in giorni siderei e ore  o sincrona
 
         Velocità di rotazione (all'equatore)	                1 valore in m/s
 
         Inclinaz. dell'asse sull'eclittica	                    1 valore in gradi
-        Ascensione Retta polo nord	                            2 valori in gradi e ore minuti secondi
 
         Declinazione                                            1 valore i gradi
 
@@ -207,3 +207,7 @@ Sateliti
         Pressione atmosferica                                   1 valore in Pa
 
         Albedo                                                  1 valore in km
+
+    Dati osservativi
+        Magnitudine apparente minima
+        Magnitudine apparente	                                1 valore numerico
