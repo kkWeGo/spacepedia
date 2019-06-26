@@ -51,3 +51,16 @@ function initb(){
 function slidedivmsg(){
     slidediv('div-msg', 'div-right', 'div-center', '#hero', 1, 1);
 }
+
+
+function scroll(){
+    var el = document.getElementById('title');
+    var bounding = el.getBoundingClientRect();
+    console.log(bounding.top);
+    if (bounding.top <= -125) {
+        document.getElementById('navbar').classList.replace('notfixed', 'fixed');
+    } else {
+        document.getElementById('navbar').classList.replace('fixed', 'notfixed');
+    }
+    
+}

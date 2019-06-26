@@ -16,7 +16,10 @@
         <link rel="stylesheet" type="text/css" href="css/sliderdiv.css">
         <script src="js/script.js"></script>
     </head>
-    <body id="body" style="overflow: scroll">
+    <body id="body" onscroll="scroll()" style="overflow: scroll">
+        <!-- BTN BACK TO TOP -->
+        <span onclick="doRedirect('#hero')" class="backtop"><i class="material-icons">keyboard_arrow_up</i><i>Top</i></span>
+        <!-- INIT PER ANIMATION -->
         <div id="init" class="div-center"></div>
         <!-- HERO -->
         <div class="hero" id="hero">
@@ -29,7 +32,8 @@
             </div> 
         </div>
         <!-- NAVBAR -->
-        <ul class="navbar" id="navbar">
+        <span class="navbarbg"></span>
+        <ul class="navbar notfixed" id="navbar">
             <li><a href="#introcorpicelesti">CORPI CELESTI</a></li>
             <li><a href="#introraggruppamenti">RAGGRUPPAMENTI</a></li>
             <li><a href="#introastronomi">ASTRONOMI</a></li>

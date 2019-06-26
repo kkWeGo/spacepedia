@@ -12,6 +12,32 @@ button{
 ::-webkit-scrollbar{
     display: none;
 }
+.backtop{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    height: 100px;
+    background-color: white;
+    z-index: 1;
+    border-radius: 20px;
+}
+.backtop i{
+    font-size: 70px;
+    color: #326199;
+    text-align: center;
+}
+.backtop i:nth-of-type(2){
+    font-size: 20px;
+    color: #326199;
+    width: 100%;
+    display: block;
+    top: -10px;
+    position: relative;
+}
+.backtop:hover{
+    cursor: pointer;
+}
 .hide{
     display: none;
 }
@@ -20,7 +46,7 @@ button{
     width: 100%;
     height: 115%;
     position: absolute;
-    z-index: 0;
+    z-index: 2;
     top: 0%;
 }
 .hero-bg {
@@ -42,7 +68,7 @@ button{
     margin: auto;
     color: white;
     text-align: left;
-    z-index: 1;
+    z-index: 3;
     transition: all 1s ease;
     opacity: 1;
 }
@@ -59,17 +85,30 @@ button{
 .navbar{
     list-style-type: none;
     margin: 0;
-    z-index: 2;
-    position: absolute;
-    top: 330px;
+    z-index: 3;
     left: 10%;
     color: transparent;
     height: 5%;
     padding: 0;
     width: 80%;
-    z-index: 1;
-    transition: all 1s ease;
 }  
+.navbarbg{
+    z-index: 1;
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background: linear-gradient(0deg, #4fb1a1 -30%, #326199 170%);
+}
+.navbar.fixed{
+    position: fixed;
+    top: 0px;
+}
+.navbar.notfixed{
+    position: absolute;
+    top: 330px;
+}
 ul.navbar li{
     float: left;
     height: 100%;
