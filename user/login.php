@@ -28,7 +28,11 @@
                 echo $pass.' db<br>';
                 if ($mail == $email && $password==$pass) {
                     $_SESSION['tipouser'] = $row["Tipo"];
-                    $_SESSION['nome'] = $row["Email"];					
+                    $_SESSION['nome'] = $row["Email"];	
+                    $_SESSION['msg'] = "Bentornato ".$_SESSION['nome']."!";
+                    break;				
+                } else {
+                    $_SESSION['msg'] = "Email o password errate!";
                 }
             }
         }

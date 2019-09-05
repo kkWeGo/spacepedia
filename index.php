@@ -127,6 +127,7 @@
                     <span class="ciao"></span>
                     <p>Un satellite naturale <br>è un qualunque corpo celeste che orbita attorno a un corpo diverso da una stella.</p>
                     <form class="frmbtn" action="list.php">
+                        <input type="text" name="tipo" value="satellite">   
                         <button>Altro</button>
                         <button><i class="material-icons">link</i></button>
                         <button></button>
@@ -138,6 +139,7 @@
                     <span class="ciao"></span>
                     <p>Un pianeta è un <br>corpo celeste<br> che orbita attorno ad una stella, e la cui massa è sufficiente a conferirgli una forma sferoidale.</p>
                     <form class="frmbtn" action="list.php">
+                        <input type="text" name="tipo" value="pianeta">
                         <button>Altro</button>
                         <button><i class="material-icons">link</i></button>
                         <button></button>
@@ -149,6 +151,7 @@
                     <span class="ciao"></span>
                     <p>Una stella è un corpo celeste che brilla di luce propria. Genera energia nel proprio nucleo attraverso processi di fusione nucleare.</p>
                     <form class="frmbtn" action="list.php">
+                        <input type="text" name="tipo" value="stella">
                         <button>Altro</button>
                         <button><i class="material-icons">link</i></button>
                         <button></button>

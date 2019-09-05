@@ -1,5 +1,6 @@
 <?php
-  session_start();
+    session_start();
+    
 ?>
 
 <!DOCTYPE html>
@@ -109,11 +110,66 @@
         <!-- DIV LISTA -->
         <div id="lista" class="lista">
             <div class="headlist">
-                <p>Nome</p>
-                <p>Tipo pianeta</p>
-                <p>Sistema Planetario</p>
-                <p>Galassia</p>
-                <p>Link</p>
+                <?php
+                    switch ($_GET["tipo"]){
+                        case 'pianeta':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo pianeta</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        case 'stella':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo stella</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        case 'satellite':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo satellite</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        case 'costellazione':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo pianeta</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        case 'sistemaplanetario':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo pianeta</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        case 'galassia':
+                ?>
+                            <p>Nome</p>
+                            <p>Tipo pianeta</p>
+                            <p>Sistema Planetario</p>
+                            <p>Galassia</p>
+                            <p>Link</p>
+                <?php
+                            break;
+                        default:
+                        
+                    }
+                ?>
             </div>
             <div>
                 <p>Terra</p>

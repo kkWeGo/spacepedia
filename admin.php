@@ -19,10 +19,24 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/sliderdiv.css">
         <link rel="stylesheet" type="text/css" href="css/stili.css">
-        <script defer src="js/script.js"></script>
+        <script src="js/script.js"></script>
     </head>
     <body id="body">
+		<?php 
+			if(isset($_SESSION['msg'])){
+		?>
+				<div id="div-msg" class="div-center">
+					<span class="close"  onclick="slidediv('div-msg', 'div-right', 'div-center', '#hero', 0, 0)">
+						<i class="material-icons">close</i>
+					</span>
+					<h2><?php echo $_SESSION['msg']; ?></h2>
+				</div>
+				<script>
+					setTimeout(slidedivmsgadmin, 3000);
+				</script>
         <?php
+            }
+            unset($_SESSION['msg']);
             $idtab = "ID_".$_GET['tipo'];
             $tab = "'t".$_GET['tipo']."'";
             $tabtosend = "t".$_GET['tipo']; 

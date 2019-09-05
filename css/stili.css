@@ -444,6 +444,9 @@ ul.navbar li a:hover{
     width: 100%;
     height: 60%;
 }
+.frmbtn input{
+    display: none;
+}
 .frmbtn button{
     position: absolute;
     top: 25%;

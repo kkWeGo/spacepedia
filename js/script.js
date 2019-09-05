@@ -51,8 +51,9 @@ function initb(){
 function slidedivmsg(){
     slidediv('div-msg', 'div-right', 'div-center', '#hero', 1, 1);
 }
-
-
+function slidedivmsgadmin(){
+    slidediv('div-msg', 'div-right', 'div-center', '#hero', 0, 0);
+}
 function scroll(){
     var el = document.getElementById('title');
     var bounding = el.getBoundingClientRect();

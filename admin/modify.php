@@ -40,10 +40,12 @@
 				if ($resulset_update==null){
 					throw new exception ("Errore");
 				}else{
+					$_SESSION['msg'] = "Modificato da ".$tipo." elemento con ID ".$_POST['txtId'];
 					header("Location: ../admin.php"."?tipo=".$tipo);
 				}
 			} catch (Exception $e){
 				$info_message = true;
+				$_SESSION['msg'] = $e->getMessage();
 				header("Location: ../admin.php"."?tipo=".$tipo);
 			}
 		} else { 

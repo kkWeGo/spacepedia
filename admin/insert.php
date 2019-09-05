@@ -48,10 +48,12 @@
 				if ($resulset_insert==null){
 					throw new exception ("Errore");
 				}else{
+					$_SESSION['msg'] = "Aggiunto ai ".$tipo;
 					header("Location: ../admin.php"."?tipo=".$tipo);
 				}
 			} catch (Exception $e){
 				$info_message = true;
+				$_SESSION['msg'] = $e->getMessage();
 				header("Location: ../admin.php"."?tipo=".$tipo);
 			}
 		} else { 

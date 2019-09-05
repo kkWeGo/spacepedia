@@ -19,10 +19,12 @@
 					throw new exception ("Errore in elimina".$_POST['txtTab']."!");
 				} else {
 					$header = "Location: ../admin.php?tipo=".$_POST['txtTipo'];
+					$_SESSION['msg'] = "Eliminato da ".$_POST['txtTipo']." elemento con ID ".$_POST['txtId'];
 					header($header);
 				}
             } catch (Exception $e){
-                $info_message = true;
+				$info_message = true;
+				$_SESSION['msg'] = $e->getMessage();
             }
 		}
 	}
