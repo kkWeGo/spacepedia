@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="css/sliderdiv.css">
         <script src="js/script.js"></script>
     </head>
-    <body id="body" style="overflow: scroll">
+    <body id="body" style="overflow: scroll" class="bg-col">
         <div id="init" class="div-center"></div>
         <!-- HERO -->
         <div class="hero herolist" id="hero">
@@ -136,6 +136,41 @@
                 <p>Via Lattea</p>
                 <span><a href="#3">link</a></span>
             </div>
+            <!--<div>
+                <p>Terra</p>
+                <p>Pianeta Gioviano</p>
+                <p>Sistema Solare</p>
+                <p>Via Lattea</p>
+                <span><a href="#3">link</a></span>
+            </div>
+            <div>
+                <p>Terra</p>
+                <p>Pianeta Gioviano</p>
+                <p>Sistema Solare</p>
+                <p>Via Lattea</p>
+                <span><a href="#3">link</a></span>
+            </div>
+            <div>
+                <p>Terra</p>
+                <p>Pianeta Gioviano</p>
+                <p>Sistema Solare</p>
+                <p>Via Lattea</p>
+                <span><a href="#3">link</a></span>
+            </div>
+            <div>
+                <p>Terra</p>
+                <p>Pianeta Gioviano</p>
+                <p>Sistema Solare</p>
+                <p>Via Lattea</p>
+                <span><a href="#3">link</a></span>
+            </div>
+            <div>
+                <p>Terra</p>
+                <p>Pianeta Gioviano</p>
+                <p>Sistema Solare</p>
+                <p>Via Lattea</p>
+                <span><a href="#3">link</a></span>
+            </div>-->
         </div>
         <script>
             setTimeout(init, 500);
