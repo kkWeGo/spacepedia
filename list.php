@@ -176,7 +176,7 @@
                 <p>Pianeta Gioviano</p>
                 <p>Sistema Solare</p>
                 <p>Via Lattea</p>
-                <span><a href="#1">link</a></span>
+                <span><a href="page.php?tipo=pianeta&id=1">link</a></span>
             </div>
             <div>
                 <p>Terra</p>
