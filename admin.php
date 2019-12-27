@@ -44,11 +44,9 @@
 		?>
 		<div class="admin"><a href="index.php">Home</a></div>
         <select class="admin" name="tablist" onchange="location = this.value;">
-			<option value="admin.php?tipo=corpicelesti" <?php if($_GET['tipo'] == 'corpicelesti'){echo ' selected';}?>>Corpi Celesti</option>
 			<option value="admin.php?tipo=pianeti" <?php if($_GET['tipo'] == 'pianeti'){echo ' selected';}?>>Pianeti</option>
             <option value="admin.php?tipo=stelle" <?php if($_GET['tipo'] == 'stelle'){echo ' selected';}?>>Stelle</option>
             <option value="admin.php?tipo=satelliti" <?php if($_GET['tipo'] == 'satelliti'){echo ' selected';}?>>Satelliti</option>
-            <option value="admin.php?tipo=astronomi" <?php if($_GET['tipo'] == 'astronomi'){echo ' selected';}?>>Astronomi</option>
             <option value="admin.php?tipo=sistemiplanetari" <?php if($_GET['tipo'] == 'sistemiplanetari'){echo ' selected';}?>>Sistemi Planetari</option>
             <option value="admin.php?tipo=costellazioni" <?php if($_GET['tipo'] == 'costellazioni'){echo ' selected';}?>>Costellazioni</option>
             <option value="admin.php?tipo=galassie" <?php if($_GET['tipo'] == 'galassie'){echo ' selected';}?>>Galassie</option>
@@ -64,14 +62,25 @@
 					<tr>
 						<th>Elimina</th>
 						<th>Modifica</th>
+						<th>Aggiorna</th>
 						<?php
 							include 'include/db_connection.php';
 							include 'include/functions.php';
-							$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = $tab  AND table_schema LIKE 'spazio_db'";
+							$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = $tab  AND table_schema LIKE 'dbspacepedia'";
 							$resulset_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
 							while($row = mysqli_fetch_array($resulset_nome_campi, MYSQLI_ASSOC)) {
 								$column_name = $row['column_name'];
-								echo '<th>'.$column_name.'</th>';
+								echo '<th>';
+								if (stripos($column_name, 'ID_') !== 0 && stripos($column_name, 'FK_') !== 0){
+									$piece = preg_split('/(?=[A-Z])/',$column_name);
+								} else {
+									$piece[0] = $column_name;
+									$piece[1] = "";
+								}
+								foreach ($piece as $prova){
+									echo $prova.' ';
+								}
+								echo '</th>';
 								$listaCol[$i]=$column_name;
 								$i = $i + 1;
 							}
@@ -91,6 +100,7 @@
 						}
 						$query = $query."FROM ".$tabtosend." as q";
 						$resulset = @mysqli_query($db_conn, $query);
+						$idtab = $listaCol[0];
 						while($row1 = mysqli_fetch_array($resulset, MYSQLI_ASSOC)) {
 					?>
 						<tr>
@@ -111,10 +121,18 @@
 									<button id="btnModifica" name="btnModifica"><i class="material-icons">edit</i></button>
 								</form>
 							</td>
+							<td>
+								<form id="frmAggiorna" name="frmAggiorna" method="post" action="admin/update.php">
+									<input type="text" id="txtName" name="txtName" value="<?php echo $row1[$listaCol[1]]?>" hidden>
+									<input type="text" id="txtTipo" name="txtTipo" value="<?php echo $_GET['tipo']?>" hidden>
+									<button id="btnUpdate" name="btnUpdate"><i class="material-icons">update</i></button>
+								</form>
+							</td>
 							<?php
 								for ($i=0; $i < sizeof($listaCol); $i++) { 
-									echo '<td class="">'.$row1[$listaCol[$i]];'</td>';
+									echo '<td class="">'.$row1[$listaCol[$i]].'</td>';
 								}
+								// && strpos($listaCol[$i], 'FK') == false)
 							?>
 						</tr>
 					<?php 

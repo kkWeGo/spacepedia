@@ -186,8 +186,9 @@
             ?>
                     <div class="headlist costellazioni">
                         <p>Nome</p>
-                        <p>Tipo costellazione</p>
+                        <p>Tipo pianeta</p>
                         <p>Sistema Planetario</p>
+                        <p>Galassia</p>
                         <p>Link</p>
                     </div>
             <?php
@@ -196,7 +197,8 @@
             ?>
                     <div class="headlist sistemiplanetari">
                         <p>Nome</p>
-                        <p>Tipo sistema planetario</p>
+                        <p>Tipo pianeta</p>
+                        <p>Sistema Planetario</p>
                         <p>Galassia</p>
                         <p>Link</p>
                     </div>
@@ -206,7 +208,9 @@
             ?>
                     <div class="headlist galassie">
                         <p>Nome</p>
-                        <p>Tipo galassia</p>
+                        <p>Tipo pianeta</p>
+                        <p>Sistema Planetario</p>
+                        <p>Galassia</p>
                         <p>Link</p>
                     </div>
             <?php

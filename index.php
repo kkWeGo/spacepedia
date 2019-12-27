@@ -53,7 +53,7 @@
                 }
                 if ($_SESSION["tipouser"]=='A'){
             ?>
-                    <li><a href="admin.php?tipo=pianeti">ADMIN</a></li>
+                    <li><a href="admin.php?tipo=pianeta">ADMIN</a></li>
                     <li><a onclick="slidediv('div-account-r', 'div-top', 'div-center', '#hero', 1, 1), slidediv('cut', 'div-left', 'div-center', '#hero', 0, 0);">EXIT</a></li>
             <?php
                 }}

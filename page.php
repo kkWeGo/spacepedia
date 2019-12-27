@@ -1,6 +1,14 @@
 <?php
     session_start();
-    
+    include 'include/db_connection.php';
+    $colId = "ID_".$_GET["tipo"];
+    //echo $colId;
+    $id = $_GET["id"];
+    $tabname = "t".$_GET["tipo"];
+    $query_valori = "SELECT * FROM ".$tabname." WHERE ".$colId."=".$id;
+    //echo $query_valori;
+    $resulset_valori = @mysqli_query($db_conn, $query_valori);
+    $val = mysqli_fetch_array($resulset_valori);
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +33,12 @@
         </div>
         <!-- DIV TITOLO -->
         <div class="title titlelist" id="title">
-            <h1>Pianeti</h1>
+            <h1><?php echo ucfirst($_GET["tipo"]); ?></h1>
         </div>
         <!-- NAVBAR -->
         <ul class="navbar navbarlist" id="navbar">
             <li><a href="index.php">HOME</a></li>
-            <li><a href="#introcorpicelesti">CORPI CELESTI</a><div></div></li>
+            <li><a href="#introcorpicelesti">CORPI CELESTI</a><div><a href="list.php?tipo=pianeta">Pianeti</a><a href="list.php?tipo=stella">Stelle</a><a href="list.php?tipo=satellite">Satelliti</a></div></li>
             <li><a href="#introraggruppamenti">RAGGRUPPAMENTI</a><div></div></li>
             <li><a href="#introastronomi">ASTRONOMI</a><div></div></li>
             <?php
@@ -48,7 +56,7 @@
                 }
                 if ($_SESSION["tipouser"]=='A'){
             ?>
-                    <li><a href="admin.php?tipo=pianeti">ADMIN</a></li>
+                    <li><a href="admin.php?tipo=pianeta">ADMIN</a></li>
                     <li><a onclick="slidediv('div-account-r', 'div-top', 'div-center', '#hero', 1, 1, 1), slidediv('cut', 'div-left', 'div-center', '#hero', 0, 0);">EXIT</a></li>
             <?php
                 }}
@@ -109,24 +117,56 @@
         </div>
         <!-- DIV PAGINA -->
         <div id="pagina" class="pagina">
-            <div class="titpag"><h2>Titolo</h2></div>
+            <div class="titpag"><h2><?php echo $val["Nome"]; ?></h2></div>
             <div class="testopagina">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel est at leo posuere porta sed a nulla. Nam id blandit diam, eget fermentum leo. Phasellus sodales laoreet lacus, at ullamcorper nunc pharetra ut. Morbi a mauris laoreet, fermentum libero quis, vulputate lectus. Donec nibh nulla, tempor nec varius et, blandit a tortor. Sed eget tristique est. Vestibulum feugiat vel dolor at congue. Phasellus vel dictum lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In interdum fermentum massa id faucibus.Pellentesque vitae suscipit felis, sed malesuada est. In hac habitasse platea dictumst. Proin consequat ante nec facilisis aliquam. Mauris ultrices tempus justo, sit amet elementum dui tempor quis. Aenean nec metus ut diam mollis sodales eget id odio. Duis et lectus bibendum, ultricies est id, finibus nisi. Morbi elit erat, commodo at pharetra a, venenatis id lacus. Suspendisse lobortis tincidunt neque, venenatis euismod justo. Maecenas eget elementum magna, non accumsan mauris.Donec scelerisque nunc a placerat scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed magna vel arcu tristique sagittis efficitur sed nunc. Vivamus et enim nibh. Sed in interdum lorem. Donec sit amet ipsum efficitur ligula scelerisque luctus id id libero. Sed sit amet accumsan sem. Duis varius tincidunt erat nec eleifend. Nullam a tempor lacus. Donec pellentesque aliquet nulla et elementum. Cras volutpat erat accumsan eleifend pretium. Suspendisse ac gravida purus, eget eleifend ante. Vestibulum rutrum convallis odio sed fringilla. Nunc eu luctus eros, ac iaculis justo.Donec quis euismod eros, eu tincidunt metus. Aliquam id dui quis nulla mattis dictum. Cras molestie urna vitae libero semper iaculis. Sed elementum sit amet lacus non maximus. Aenean porttitor blandit gravida. Ut pharetra varius nulla sed vulputate. Ut sollicitudin ornare augue, ac egestas est maximus eu. Integer fermentum, orci at interdum ullamcorper, lacus augue pulvinar erat, eu rhoncus libero magna id dui.Mauris sodales, sem nec semper viverra, metus urna condimentum orci, et finibus metus sem interdum felis. Phasellus feugiat accumsan nunc vel fringilla. Nunc tempus mauris odio, eget suscipit mauris facilisis ac. Phasellus dictum semper lorem a cursus. Sed vehicula ipsum maximus massa suscipit, a suscipit tortor auctor. Nam posuere dolor in dolor condimentum, quis laoreet enim hendrerit. Vestibulum at feugiat ligula. Nullam vel diam id ex scelerisque tempor. Donec at arcu bibendum, dictum dui id, dignissim massa. Aenean consequat scelerisque ipsum non iaculis. Donec molestie gravida elit. Ut in cursus orci. Aenean ac orci eros. Integer gravida dui magna, maximus facilisis ligula suscipit non. Cras eu orci ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel est at leo posuere porta sed a nulla. Nam id blandit diam, eget fermentum leo. Phasellus sodales laoreet lacus, at ullamcorper nunc pharetra ut. Morbi a mauris laoreet, fermentum libero quis, vulputate lectus. Donec nibh nulla, tempor nec varius et, blandit a tortor. Sed eget tristique est. Vestibulum feugiat vel dolor at congue. Phasellus vel dictum lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In interdum fermentum massa id faucibus.Pellentesque vitae suscipit felis, sed malesuada est. In hac habitasse platea dictumst. Proin consequat ante nec facilisis aliquam. Mauris ultrices tempus justo, sit amet elementum dui tempor quis. Aenean nec metus ut diam mollis sodales eget id odio. Duis et lectus bibendum, ultricies est id, finibus nisi. Morbi elit erat, commodo at pharetra a, venenatis id lacus. Suspendisse lobortis tincidunt neque, venenatis euismod justo. Maecenas eget elementum magna, non accumsan mauris.Donec scelerisque nunc a placerat scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed magna vel arcu tristique sagittis efficitur sed nunc. Vivamus et enim nibh. Sed in interdum lorem. Donec sit amet ipsum efficitur ligula scelerisque luctus id id libero. Sed sit amet accumsan sem. Duis varius tincidunt erat nec eleifend. Nullam a tempor lacus. Donec pellentesque aliquet nulla et elementum. Cras volutpat erat accumsan eleifend pretium. Suspendisse ac gravida purus, eget eleifend ante. Vestibulum rutrum convallis odio sed fringilla. Nunc eu luctus eros, ac iaculis justo.Donec quis euismod eros, eu tincidunt metus. Aliquam id dui quis nulla mattis dictum. Cras molestie urna vitae libero semper iaculis. Sed elementum sit amet lacus non maximus. Aenean porttitor blandit gravida. Ut pharetra varius nulla sed vulputate. Ut sollicitudin ornare augue, ac egestas est maximus eu. Integer fermentum, orci at interdum ullamcorper, lacus augue pulvinar erat, eu rhoncus libero magna id dui.Mauris sodales, sem nec semper viverra, metus urna condimentum orci, et finibus metus sem interdum felis. Phasellus feugiat accumsan nunc vel fringilla. Nunc tempus mauris odio, eget suscipit mauris facilisis ac. Phasellus dictum semper lorem a cursus. Sed vehicula ipsum maximus massa suscipit, a suscipit tortor auctor. Nam posuere dolor in dolor condimentum, quis laoreet enim hendrerit. Vestibulum at feugiat ligula. Nullam vel diam id ex scelerisque tempor. Donec at arcu bibendum, dictum dui id, dignissim massa. Aenean consequat scelerisque ipsum non iaculis. Donec molestie gravida elit. Ut in cursus orci. Aenean ac orci eros. Integer gravida dui magna, maximus facilisis ligula suscipit non. Cras eu orci ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel est at leo posuere porta sed a nulla. Nam id blandit diam, eget fermentum leo. Phasellus sodales laoreet lacus, at ullamcorper nunc pharetra ut. Morbi a mauris laoreet, fermentum libero quis, vulputate lectus. Donec nibh nulla, tempor nec varius et, blandit a tortor. Sed eget tristique est. Vestibulum feugiat vel dolor at congue. Phasellus vel dictum lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In interdum fermentum massa id faucibus.Pellentesque vitae suscipit felis, sed malesuada est. In hac habitasse platea dictumst. Proin consequat ante nec facilisis aliquam. Mauris ultrices tempus justo, sit amet elementum dui tempor quis. Aenean nec metus ut diam mollis sodales eget id odio. Duis et lectus bibendum, ultricies est id, finibus nisi. Morbi elit erat, commodo at pharetra a, venenatis id lacus. Suspendisse lobortis tincidunt neque, venenatis euismod justo. Maecenas eget elementum magna, non accumsan mauris.Donec scelerisque nunc a placerat scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed magna vel arcu tristique sagittis efficitur sed nunc. Vivamus et enim nibh. Sed in interdum lorem. Donec sit amet ipsum efficitur ligula scelerisque luctus id id libero. Sed sit amet accumsan sem. Duis varius tincidunt erat nec eleifend. Nullam a tempor lacus. Donec pellentesque aliquet nulla et elementum. Cras volutpat erat accumsan eleifend pretium. Suspendisse ac gravida purus, eget eleifend ante. Vestibulum rutrum convallis odio sed fringilla. Nunc eu luctus eros, ac iaculis justo.Donec quis euismod eros, eu tincidunt metus. Aliquam id dui quis nulla mattis dictum. Cras molestie urna vitae libero semper iaculis. Sed elementum sit amet lacus non maximus. Aenean porttitor blandit gravida. Ut pharetra varius nulla sed vulputate. Ut sollicitudin ornare augue, ac egestas est maximus eu. Integer fermentum, orci at interdum ullamcorper, lacus augue pulvinar erat, eu rhoncus libero magna id dui.auris sodales, sem nec semper viverra, metus urna condimentum orci, et finibus metus sem interdum felis. Phasellus feugiat accumsan nunc vel fringilla. Nunc tempus mauris odio, eget suscipit mauris facilisis ac. Phasellus dictum semper lorem a cursus. Sed vehicula ipsum maximus massa suscipit, a suscipit tortor auctor. Nam posuere dolor in dolor condimentum, quis laoreet enim hendrerit. Vestibulum at feugiat ligula. Nullam vel diam id ex scelerisque tempor. Donec at arcu bibendum, dictum dui id, dignissim massa. Aenean consequat scelerisque ipsum non iaculis. Donec molestie gravida elit. Ut in cursus orci. Aenean ac orci eros. Integer gravida dui magna, maximus facilisis ligula suscipit non. Cras eu orci ipsum.
+                    <?php
+                        //$fpath = 'pages/'.$val[].'.txt';
+                        $fpath = $val['Descrizione'];
+                        $text = file_get_contents($fpath);
+                        echo $text;
+                    ?>
                     <span></span>               
                 </p>
             </div>
             <div class="imgpag"><img src="img/pianeta.jpg" alt="img"></div>
             <div class="attributi">
                 <ul>
-                    <li>ciao: come vaS</li>
-                    <li>ciao2</li>
-                    <li>ciao: come vaS</li>
-                    <li>ciao3</li>
-                    <li>ciao: come vaS</li>
-                    <li>ciao4</li>
-                    <li>ciao: come vaS</li>
-                    <li>ciao5</li>
+                    <?php
+                        include 'include/db_connection.php';
+                        include 'include/functions.php';
+
+                        $tab = "'t".$_GET['tipo']."'";
+
+                        $query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = $tab  AND table_schema LIKE 'dbspacepedia'";
+
+                        $result_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
+                        
+                        $tab = "t".$_GET['tipo'];
+
+                        $query_valori = "SELECT * FROM ".$tab." WHERE ID_pianeta = ".$_GET["id"];
+
+                        $result_valori = @mysqli_query($db_conn, $query_valori);
+                        
+                        $valori = mysqli_fetch_array($result_valori, MYSQLI_ASSOC);
+                        
+                        while($row = mysqli_fetch_array($result_nome_campi, MYSQLI_ASSOC)) {
+                            foreach($row as $s)
+                            {
+                                if (stripos($s, 'ID_') === false){
+                                    if (stripos($s, 'FK_') === false){
+                                        $words = preg_replace('/(?<!\ )[A-Z]/', ' $0', $s); 
+                                        echo '<li class="tipo">'.$words."</li>";
+                                        echo '<li class="valore">'.$valori[$s]."</li>";
+                                    } else {
+                                        $words = preg_replace('/(?<!\ )[A-Z]/', ' $0', substr($s, 3)); 
+                                        echo '<li class="tipo">'.$words."</li>";
+                                    }                                    
+                                } 
+                            }
+                        }                   
+                    ?>
+                    
 
                 </ul>
             </div>

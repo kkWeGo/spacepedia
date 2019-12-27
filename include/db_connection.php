@@ -2,7 +2,7 @@
     $db_host = 'localhost';
     $db_user = 'root';
     $db_pass = '';
-    $db_name = 'spazio_db';
+    $db_name = 'dbspacepedia';
     
     $error_message = false;
     $info_message = false;

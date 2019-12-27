@@ -4,15 +4,13 @@ Stelle
 
     Classe Spettrale
 
-    Fk astronomo che l'ha scoperta
-
     Path file con testo
 
     Path foto
 
     fk Sistema planetario(opzionale)
 
-    Numero pianeti (derivato)
+    fk Costellazione
 
     Parametri orbitali
 
@@ -83,13 +81,11 @@ Pianeti
 
     Classificazione	
 
-    Fk astronomo che l'ha scoperto
-
     Path file con testo
 
     Path foto
 
-    Fk sistema planetario
+    Fk stella madre
 
     Numero satelliti (derivato)
 
@@ -144,11 +140,9 @@ Pianeti
 
         Albedo                                                  1 valore in km
 
-Sateliti
+Satelliti
 
     Classificazione	
-
-    Fk astronomo che l'ha scoperto
 
     Path file con testo
 
@@ -210,4 +204,67 @@ Sateliti
 
     Dati osservativi
         Magnitudine apparente minima
+
         Magnitudine apparente	                                1 valore numerico
+
+Galassie
+
+    Dati osservativi
+        
+        Costellazione	                                        1 valore testo
+        
+        Ascensione retta	                                    3 valori ore minuti secondi gradi
+        
+        Declinazione	                                        3 valori gradi primi secondi
+        
+        Dimensione apparente (V)	                            1 valore gradi
+
+    Caratteristiche fisiche
+
+        Tipo	Galassia a spirale barrata
+
+        Classe	SBbc
+        
+        Massa	6,82 × 1011  M⊙
+        
+        Dimensioni	100 000 a.l.(32 600 pc)
+
+        Magnitudine assoluta (V)	−20,9
+        
+        Età stimata	13,7 miliardi di anni
+
+Costellazioni
+
+        Nome latino	
+
+        Genitivo	
+
+        Abbreviazione
+
+    Coordinate
+
+        Ascensione retta	9 h
+
+        Declinazione	-30°
+
+        Area totale	221 gradi quadrati
+
+    Visibilità dalla Terra
+
+        Latitudine min	+50°
+
+        Latitudine max	-90°
+        
+        Transito al meridiano	marzo
+
+    Stella principale
+        
+        Nome derivato 
+
+Sistemi solari
+
+    Galassia di appartenenza
+
+    numero pianeti --> numero pianeti con stella madre corrispondente
+
+    stella madre derivato

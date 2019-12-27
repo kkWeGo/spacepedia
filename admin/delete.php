@@ -11,8 +11,9 @@
 
 	if (!$error_message){
         if (isset($_POST['btnDelete'])){
-			$id = text_filter($_POST['txtId']);
+			$id = text_filter_lowercase(text_filter($_POST["txtId"]));;
 			$query_delete = "DELETE FROM ".$_POST['txtTab']." WHERE ".$_POST['txtIdTab']." = ".$id;
+			echo $query_delete;
             try{
 				$resultset_delete = mysqli_query($db_conn, $query_delete);
                 if ($resultset_delete==null){

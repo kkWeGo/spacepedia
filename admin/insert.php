@@ -8,13 +8,14 @@
 	} 
 	include '../include/db_connection.php';
 	include '../include/functions.php';	
+	include '../wikiscraper.php';
 	if (!$error_message){
 		if (isset($_POST['btnAdd'])){
 			$i = 0;
 			$tipo = substr($_POST["txtTab"], 1);
-			$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = "."'".$_POST["txtTab"]."'"." AND table_schema LIKE 'spazio_db'";
+			$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = "."'".$_POST["txtTab"]."'"." AND table_schema LIKE 'dbspacepedia'";
 			$resulset_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
-			echo $query_nome_campi;
+			echo $query_nome_campi."</br>"."</br>";
 			while($row = mysqli_fetch_array($resulset_nome_campi, MYSQLI_ASSOC)) {
 				$column_name = $row['column_name'];
 				$listaCol[$i]=$column_name;
@@ -28,20 +29,25 @@
 					$query_insert = $query_insert.$listaCol[$i].', ';
 				}
 			} 
+			echo $query_insert."</br>"."</br>";
+			$_POSTk = array_keys($_POST);
+			foreach ($_POSTk as $ec){ echo $ec."</br>";}
+
 			$i = 1;
-			foreach ($_POST as $prova) {
-				$prova = "'".$prova."'";
-				$query_insert = $query_insert.$prova;
+			$_POST["txtDescrizione"] = "pages/".$_POST["txtNome"].".txt";
+			foreach ($_POST as $value) {
+				$value = "'".$value."'";
+				$query_insert = $query_insert.$value;
 				if ($i == sizeof($_POST)-2) {
 					$query_insert = $query_insert.')';
 					break;
 				} else {
 					$query_insert = $query_insert.', ';
 				}
-				echo $query_insert.'<br>';
 				$i++;
 			}
-			echo $query_insert.'<br>';
+			echo $query_insert.'end<br>';
+			scrape($_POST['txtNome']);
 			try{
 				$resulset_insert = @mysqli_query($db_conn, $query_insert);
 
@@ -56,6 +62,7 @@
 				$_SESSION['msg'] = $e->getMessage();
 				header("Location: ../admin.php"."?tipo=".$tipo);
 			}
+
 		} else { 
 ?>
 <!DOCTYPE html>
@@ -81,14 +88,14 @@
 				$i = 0;
 				$tab = "'".text_filter_lowercase(text_filter($_POST["txtTab"]))."'";
 				$tabuq = text_filter_lowercase(text_filter($_POST["txtTab"]));
-				$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'spazio_db'";
+				$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'dbspacepedia'";
 				$resulset_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
 				while($row = mysqli_fetch_array($resulset_nome_campi, MYSQLI_ASSOC)) {
 					$column_name = $row['column_name'];
 					$listaCol[$i]=$column_name;
 					$i = $i + 1;
 				}
-				$query_tipo_campi = "SELECT data_type FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'spazio_db'";
+				$query_tipo_campi = "SELECT data_type FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'dbspacepedia'";
 				$resulset_tipo_campi = @mysqli_query($db_conn, $query_tipo_campi);
 				while($row1 = mysqli_fetch_array($resulset_tipo_campi, MYSQLI_ASSOC)) {
 					$data_type = $row1['data_type'];
@@ -96,8 +103,9 @@
 					$j = $j + 1;
 				}
 				for ($i=1; $i < sizeof($listaCol); $i++) { 
+					echo '<label for="'.$listaCol[$i].'">'.$listaCol[$i].'</label>';
 					if ((strpos($listaType[$i], 'int')) !== false) {
-						echo '<input type="number" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" required="" maxlength="50">';
+						echo '<input type="number" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" maxlength="50">';
 					} else if ((strpos($listaType[$i], 'enum')) !== false) {
 						echo '<select name = "'.$listaCol[$i].'">Select';
 						echo '<option value="" disabled selected>Select your option</option>';
@@ -110,16 +118,16 @@
 						}	
          				echo '</select>';
 					} else if ((strpos($listaType[$i], 'date')) !== false) {
-						echo '<input type="date" id="'.$listaCol[$i].'" name="date"'.$listaCol[$i].'" required="" maxlength="50">';
+						echo '<input type="date" id="'.$listaCol[$i].'" name="date"'.$listaCol[$i].'" maxlength="50">';
 					} else if ((strpos($listaType[$i], 'time')) !== false) {
-						echo '<input type="time" id="'.$listaCol[$i].'" name="time"'.$listaCol[$i].'" required="" maxlength="50">';
+						echo '<input type="time" id="'.$listaCol[$i].'" name="time"'.$listaCol[$i].'" maxlength="50">';
 					} else if ((strpos($listaType[$i], 'char')) !== false) {
 						if ((strpos($listaCol[$i], 'mail'))  !== false){
-							echo '<input type="email" id="txtEmail" name="txtEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="'.$listaCol[$i].'" required="" maxlength="50">';
+							echo '<input type="email" id="txtEmail" name="txtEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="'.$listaCol[$i].'" maxlength="50">';
 						} else if ((strpos($listaCol[$i], 'password')) !== false){
-							echo '<input type="password" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" required="" minlenght="8" maxlength="20">';
+							echo '<input type="password" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" minlenght="8" maxlength="20">';
 						} else {
-							echo '<input type="text" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" required="" maxlength="20">';
+							echo '<input type="text" id="txt'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaCol[$i].'" maxlength="20">';
 						}
 					}
 				}	

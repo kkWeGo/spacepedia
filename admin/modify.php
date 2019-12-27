@@ -14,7 +14,7 @@
 			$tipo = substr($_POST["txtTab"], 1);
 			$idtab = $_POST["txtIdTab"];
 			$id = $_POST["txtId"];
-			$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = "."'".$_POST["txtTab"]."'"." AND table_schema LIKE 'spazio_db'";
+			$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = "."'".$_POST["txtTab"]."'"." AND table_schema LIKE 'dbspacepedia'";
 			$resulset_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
 			while($row = mysqli_fetch_array($resulset_nome_campi, MYSQLI_ASSOC)) {
 				$column_name = $row['column_name'];
@@ -33,7 +33,9 @@
 				}
 				$i++;
 			}
+			echo $query_update;
 			$query_update = $query_update." WHERE ".$idtab."=". $id;
+			echo $query_update;
 			try{
 				$resulset_update = @mysqli_query($db_conn, $query_update);
 
@@ -75,14 +77,14 @@
 				$tab = "'".text_filter_lowercase(text_filter($_POST["txtTab"]))."'";
                 $tabuq = text_filter_lowercase(text_filter($_POST["txtTab"]));
                 $id = text_filter_lowercase(text_filter($_POST["txtId"]));
-				$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'spazio_db'";
+				$query_nome_campi = "SELECT column_name FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'dbspacepedia'";
                 $resulset_nome_campi = @mysqli_query($db_conn, $query_nome_campi);
 				while($row = mysqli_fetch_array($resulset_nome_campi, MYSQLI_ASSOC)) {
 					$column_name = $row['column_name'];
 					$listaCol[$i]=$column_name;
 					$i = $i + 1;
 				}
-				$query_tipo_campi = "SELECT data_type FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'spazio_db'";
+				$query_tipo_campi = "SELECT data_type FROM information_schema.columns WHERE table_name = ".$tab." AND table_schema LIKE 'dbspacepedia'";
 				$resulset_tipo_campi = @mysqli_query($db_conn, $query_tipo_campi);
 				while($row1 = mysqli_fetch_array($resulset_tipo_campi, MYSQLI_ASSOC)) {
 					$data_type = $row1['data_type'];
@@ -97,8 +99,9 @@
                     $listaValori[$f]=$valori;
                 }
 				for ($i=1; $i < sizeof($listaCol); $i++) { 
+					echo '<label for="'.$listaCol[$i].'">'.$listaCol[$i].'</label>';
 					if ((strpos($listaType[$i], 'int')) !== false) {
-						echo '<input type="number" id="'.$listaCol[$i].'" name="txt"'.$listaCol[$i].' placeholder="'.$listaValori[$i].'" required="" maxlength="50" value="'.$listaValori[$i].'">';
+						echo '<input type="number" id="'.$listaCol[$i].'" name="txt'.$listaCol[$i].'" placeholder="'.$listaValori[$i].'" required="" maxlength="50" value="'.$listaValori[$i].'">';
 					} else if ((strpos($listaType[$i], 'enum')) !== false) {
 						echo '<select name = "'.$listaCol[$i].'">Select';
 						echo '<option value="" disabled>Select your option</option>';
