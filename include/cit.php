@@ -3,7 +3,8 @@
         <?php
             $citazioni = file_get_contents ("jsons/cit.json");
             $arraycit = json_decode($citazioni, true);
-            $random = rand (0,2);
+            $maxCit = count($arraycit) -1;
+            $random = rand (0, $maxCit);
             echo '<p>'.$arraycit['cit'.$random][0].'<p>';
             echo '<h2>'.$arraycit['cit'.$random][1].'</h2>';
         ?>
